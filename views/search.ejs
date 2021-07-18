@@ -1,0 +1,94 @@
+<%- include('partials/header') %>
+
+<% var err = true; %>
+
+<% var count = 0; %>
+
+              
+<div class="container center" style="padding-top: 150px;">
+
+    <h1 style="font-family: 'PT Serif', serif;" class="center">Your search results are:</h1>
+    <br>
+    <br>
+    <h3 class="center"style="text-decoration: underline;">Match Found in the Database Server!</h3>
+            <main id="main">
+                <div class="center container div-port" style="border: 1px solid black; margin-top: 30px; border-radius: 20px;">
+                    <br>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">User Reference Id</th>
+                            <th scope="col">Introducer Reference Id</th>
+                            <th scope="col">Introducer Username</th>
+                            <th scope="col">Commision</th>
+                            <th scope="col">Active Commision</th>
+                            <th scope="col">Passive Commision</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <% for(var i=0; i< users.length; i++){ %>
+                                    <% if(users[i].username.toLowerCase().search(input.toLowerCase()) != -1 || users[i].name.toLowerCase().search(input.toLowerCase()) != -1){ %>                         
+                                            <% var currentintroducer; %>
+                                            <% var commision = 0; %> 
+                                            <% var active = 0; %>
+                                            <% var passive = 0; %>
+                                            <% for(var j = 0; j< users.length; j++){ %>
+                                              <% if(users[i].introducerreference.toString().trim() == users[j].userreference.toString().trim()) { %>
+                                                <% currentintroducer = users[j].username  %>
+                                              <% } %>
+                                            <% } %>
+
+                                            <% for(var j = 0; j< users.length; j++){ %>
+                                                <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                                                  <% commision += 200 %>
+                                                  <% active += 200 %>
+                                                  <% for(var x = 0; x< users.length; x++) { %>
+                                                    <% if(users[j].userreference.toString().trim() == users[x].introducerreference.toString().trim()){ %>
+                                                        <% commision +=30 %>
+                                                        <% passive += 30 %>
+                                                    <% } %>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        <td><%= users[i].username %></td>
+                                        <td><%= users[i].name %></td>
+                                        <td><%= users[i].phone %></td>
+                                        <td><%= users[i].email %></td>
+                                        <td><%= users[i].userreference %></td>
+                                        <td><%= users[i].introducerreference %></td>
+                                        <td><%= currentintroducer %></td>
+                                        <td><%= commision %></td>
+                                        <td><%= active %></td> 
+                                        <td><%= passive %></td>
+                                        </tr>
+                                                        
+                                        <% currentintroducer = "" %>
+                                        <% commision = 0 %>
+                                        <% active = 0 %>
+                                        <% passive = 0 %>
+                                        <% count ++ %>
+                                    <% } %>
+                                <% } %>
+                        </tbody>
+                    </table>  
+                    </div>
+                    <br>
+<% if(count > 0){ %>
+    <p class="center result-count"><%= count %> results found</p>
+<% } else { %>
+    <p class="center result-count">No resuts found!</p>
+<% } %>
+
+</main>
+</div>
+
+<style>
+    tr:nth-child(even) {background-image: linear-gradient(to right, #FF3600, white);}
+  </style>
+<%- include('partials/footer') %>

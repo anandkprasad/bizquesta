@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <title>BizQuesta - Learn and Earn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-onix-digital.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+
+TemplateMo 565 Onix Digital
+
+https://templatemo.com/tm-565-onix-digital
+
+-->
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 logo-container">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="/" class="logo">
+              <h1 style="font-family: 'PT Serif', serif;"> <span style=" color: #ff695f;">Biz</span>Questa</h1>
+            </a>
+
+            <style>
+            </style>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services">Services</a></li>
+              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+              <% if(!currentUser) { %>
+                <li class="scroll-to-section"><a href="/login">Login</a></li> 
+                <li class="scroll-to-section"><div class="main-red-button-hover"><a href="/product">Get Started</a></div></li> 
+                <% } else { %>
+                  <li class="scroll-to-section"><a href="/logout">Logout</a></li> 
+                  <li class="scroll-to-section"><a href="/dashboard">Logged in as <%= currentUser.username %></a></li> 
+                  <li class="scroll-to-section"><div class="main-red-button-hover"><a href="/product">Get Started</a></div></li> 
+                  <% } %>
+      
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  
+<div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="owl-carousel owl-banner">
+                <div class="item header-text">
+                  <h6>Welcome to bizquesta </h6>
+                  <h2>Earn <em>money</em> online NOW!</h2>
+                  <p>Our affiliate programs trains you to sell, influence and earn money for yourself and your fellow affiliate marketers. </p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#contact">Message Us Now</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-envelope"></i> bizquestaa@gmail.com</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="item header-text">
+                  <h6>Affiliate Marketing</h6>
+                  <h2>Get the <em>best tools</em> for <span>influencing.</span></h2>
+                  <p>Best quallity tools provided for whatsapp marketing, instagram influence building and email marketing in one click.</p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#services">Our Services</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-envelope"></i> bizquestaemail@gmail.com</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="item header-text">
+                  <h6>Video Tutorials</h6>
+                  <h2>Watch <em>our videos</em> for your <span>knowlege</span></h2>
+                  <p>We provide live sessions, quality videos and personal training to make your self independent.</p>
+                  <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#video">Know more</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-envelope"></i> bizquestaemail@gmail.com</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services" class="our-services section">
+    <div class="services-right-dec">
+      <img src="assets/images/services-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="services-left-dec">
+        <img src="assets/images/services-left-dec.png" alt="">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h2>We <em>Provide</em> The Best Digital Marketing Service With <span>Our Tools</span></h2>
+            <span>Our Services</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-carousel owl-services">
+            <div class="item">
+              <h4>Bulk Whatsapp android app</h4>
+              <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>Develop The Best Strategy for Affiliate</h4>
+              <div class="icon"><img src="assets/images/service-icon-02.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>Email Blaster Software for your needs</h4>
+              <div class="icon"><img src="assets/images/service-icon-03.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>150+ Crore Lead Database</h4>
+              <div class="icon"><img src="assets/images/service-icon-04.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>9000+ Facebook Group Links</h4>
+              <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>See The Strategy In The Market</h4>
+              <div class="icon"><img src="assets/images/service-icon-02.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+            <div class="item">
+              <h4>Discover the digital marketing trend</h4>
+              <div class="icon"><img src="assets/images/service-icon-04.png" alt=""></div>
+              <p>Get to know more about the topic in details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="left-image">
+            <img src="assets/images/about-left-image.png" alt="Two Girls working together">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h2>Why <em>BizQuesta</em></h2>
+            <p>Your one stop solution for learning, earning, knowledge and money.</p>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="fact-item">
+                  <div class="count-area-content">
+                    <div class="icon">
+                      <img src="assets/images/service-icon-01.png" alt="">
+                    </div>
+                    <div class="count-digit">100+</div>
+                    <div class="count-title">Trainers</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="fact-item">
+                  <div class="count-area-content">
+                    <div class="icon">
+                      <img src="assets/images/service-icon-02.png" alt="">
+                    </div>
+                    <div class="count-digit">300+</div>
+                    <div class="count-title">Trainings</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="fact-item">
+                  <div class="count-area-content">
+                    <div class="icon">
+                      <img src="assets/images/service-icon-03.png" alt="">
+                    </div>
+                    <div class="count-digit">40000+</div>
+                    <div class="count-title">Happy Learners and earners</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div id="pricing" class="pricing-tables">
+    <div class="tables-left-dec">
+      <img src="assets/images/tables-left-dec.png" alt="">
+    </div>
+    <div class="tables-right-dec">
+      <img src="assets/images/tables-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h2>Select a suitable <em>plan</em> for your affiliate <span>program</span></h2>
+            <span>Our Plans</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="item first-item">
+            <h4>Marketing and Branding Kit</h4>
+            <em>₹500/mo</em>
+            <span>₹300</span>
+            <ul>
+              <li>LEARN THE BEST LEAD GENERATION COURSE AND EARN AS AN AFFILIATE</li>
+            </ul>
+            <div class="main-blue-button-hover">
+              <a href="/product">Know more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="item second-item">
+            <h4>Supreme Plan</h4>
+            <em>₹1700/mo</em>
+            <span>₹1000</span>
+            <ul>
+              <li>Coming soon</li>
+              <br>
+            </ul>
+            <div class="main-blue-button-hover">
+              <a href="#">Coming soon</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="item third-item">
+            <h4>Professional Plan</h4>
+            <em>₹8000/mo</em>
+            <span>₹5000</span>
+            <ul>
+              <li>Coming soon</li>
+              <br>
+            </ul>
+            <div class="main-blue-button-hover">
+              <a href="#">Coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="subscribe" class="subscribe">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="inner-content">
+            <div class="row">
+              <div class="col-lg-10 offset-lg-1">
+                <h2>Get in touch with us</h2>
+                <form id="subscribe" action="/contact" method="post">
+                  <input type="text" name="name" id="website" placeholder="Your Name" required="">
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                  <button type="submit" id="form-submit" class="main-button ">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="video" class="our-videos section">
+    <div class="videos-left-dec">
+      <img src="assets/images/videos-left-dec.png" alt="">
+    </div>
+    <div class="videos-right-dec">
+      <img src="assets/images/videos-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="thumb">
+                          <!-- Trigger/Open the Modal -->
+                        <a onclick="document.getElementById('id01').style.display='block'"
+                        class=""><img style="width: 100%; " src="/assets/images/vid-image.png" alt=""></a>
+                        </div>
+                      </div>
+                    </li>
+                    </div>
+                  </div>
+                </div>             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="section-heading">
+            <h2>Feel free to <em>Contact</em> us<span></span></h2>
+            <div id="map">
+              <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=New%20Delhi+(BizQuesta)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            </div>
+            <div class="info">
+              <span><i class="fa fa-phone"></i> <a href="#">+91 8368429251<br>+91 89291 78901</a></span>
+              <span><i class="fa fa-envelope"></i> <a href="#">bizquestaa@gmail.com<br>@bizquesta</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <form id="contact" action="/contact" method="post">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="text" name="phone" id="surname" placeholder="Phone" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-button">Submit Request</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="contact-dec">
+      <img src="assets/images/contact-dec.png" alt="">
+    </div>
+    <div class="contact-left-dec">
+      <img src="assets/images/contact-left-dec.png" alt="">
+    </div>
+  </div>
+
+
+<!-- The Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container" style="padding: 60px; margin-top: 30px;">
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">&times;</span>
+      <h1 style="font-family: 'PT Serif', serif;" class="center">Feel free to Contact us!</h1>
+      <br>
+      <br>
+      <form action="/contact" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Name" name="name">
+        </div>
+        <br>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Phone" name="phone">
+        </div>
+        <br>
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email" name="email">
+        </div>
+        <br>
+        <div class="form-group">
+            <input class="form-control btn-primary" style="background-color: #ff695f;" type="submit" value="Submit">  
+        </div>
+        <br>
+        </form>
+    </div>
+  </div>
+</div>
+
+ <%- include('partials/footer') %>
