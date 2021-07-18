@@ -218,6 +218,6 @@ app.get("/contacts", function(req, res){
     });
 });
 
-app.listen(process.env.port, function(){
+app.listen(process.env.PORT, function(){
     console.log("Bizquesta server started...");
 });
