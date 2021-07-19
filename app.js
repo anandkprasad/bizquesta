@@ -218,6 +218,17 @@ app.get("/contacts", function(req, res){
     });
 });
 
+app.get("/users/:id", function(req, res){
+    User.findByIdAndRemove(req.params.id, function(err, user){
+        if(err){
+            res.send("Something went Wrong!");
+        } else {
+            req.flash("success", "User removed successfully!");
+            res.redirect("/admin-dashboard");
+        }
+    });
+});
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Bizquesta server started...");
 });
