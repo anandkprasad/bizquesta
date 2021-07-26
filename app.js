@@ -139,7 +139,7 @@ app.post("/signup", function(req, res){
             res.redirect("/login");
         }
         passport.authenticate("local")(req,res, function(){
-            res.redirect("/payment");
+            res.redirect("/dashboard");
         });    
     });
 })
@@ -157,10 +157,6 @@ app.get("/dashboard", isLoggedIn, function(req, res){
 
 app.get("/product", function(req, res){
     res.render("product-page.ejs");
-});
-
-app.get("/payment", function(req, res){
-    res.render("payment.ejs");
 });
 
 app.get('/admin-dashboard', isLoggedIn, isAdmin, function(req, res){
