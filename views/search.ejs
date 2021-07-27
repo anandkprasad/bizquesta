@@ -23,51 +23,21 @@
                             <th scope="col">Phone</th>
                             <th scope="col">Email</th>
                             <th scope="col">User Reference Id</th>
-                            <th scope="col">Introducer Reference Id</th>
-                            <th scope="col">Introducer Username</th>
-                            <th scope="col">Commision</th>
-                            <th scope="col">Active Commision</th>
-                            <th scope="col">Passive Commision</th>
                             <th scope="col">Delete</th>
+                            <th scope="col">Commissions</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <% for(var i=0; i< users.length; i++){ %>
                                     <% if(users[i].username.toLowerCase().search(input.toLowerCase()) != -1 || users[i].name.toLowerCase().search(input.toLowerCase()) != -1){ %>                         
-                                            <% var currentintroducer; %>
-                                            <% var commision = 0; %> 
-                                            <% var active = 0; %>
-                                            <% var passive = 0; %>
-                                            <% for(var j = 0; j< users.length; j++){ %>
-                                              <% if(users[i].introducerreference.toString().trim() == users[j].userreference.toString().trim()) { %>
-                                                <% currentintroducer = users[j].username  %>
-                                              <% } %>
-                                            <% } %>
-
-                                            <% for(var j = 0; j< users.length; j++){ %>
-                                                <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
-                                                  <% commision += 200 %>
-                                                  <% active += 200 %>
-                                                  <% for(var x = 0; x< users.length; x++) { %>
-                                                    <% if(users[j].userreference.toString().trim() == users[x].introducerreference.toString().trim()){ %>
-                                                        <% commision +=30 %>
-                                                        <% passive += 30 %>
-                                                    <% } %>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
                                         <td><%= users[i].username %></td>
                                         <td><%= users[i].name %></td>
                                         <td><%= users[i].phone %></td>
                                         <td><%= users[i].email %></td>
                                         <td><%= users[i].userreference %></td>
-                                        <td><%= users[i].introducerreference %></td>
-                                        <td><%= currentintroducer %></td>
-                                        <td><%= commision %></td>
-                                        <td><%= active %></td> 
-                                        <td><%= passive %></td>
                                         <td><a href="/users/<%= users[i]._id %>">Delete</a></td>
+                                        <td><a href="/users/details/<%= users[i]._id %>">Commissions</a></td>
                                         </tr>
                                                         
                                         <% currentintroducer = "" %>

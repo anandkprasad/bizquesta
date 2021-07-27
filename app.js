@@ -214,6 +214,7 @@ app.get("/contacts", function(req, res){
     });
 });
 
+//DELETE request
 app.get("/users/:id", isAdmin, isLoggedIn, function(req, res){
     User.findByIdAndRemove(req.params.id, function(err, user){
         if(err){
@@ -223,6 +224,25 @@ app.get("/users/:id", isAdmin, isLoggedIn, function(req, res){
             res.redirect("/admin-dashboard");
         }
     });
+});
+
+app.get("/users/details/:id", isLoggedIn, isAdmin, function(req, res){
+    User.find({}, function(err, users){
+        if(err){
+            res.send("Something went wrong!");
+            console.log(err)
+        } else {
+            User.findById(req.params.id, function(err, user){
+                if(err){
+                    res.send("Something went Wrong!");
+                    console.log(err);
+                } else {
+                    res.render("user-details.ejs", {user: user, users: users});
+                }
+            })
+        }
+    });
+
 });
 
 app.listen(process.env.PORT || 3000, function(){

@@ -1,0 +1,151 @@
+<%- include('partials/header') %>
+
+<style>
+    .v-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid green; 
+}
+</style>
+
+<div class="container" style="padding-top: 150px;">
+        <h1 style="font-family: 'PT Serif', serif; text-decoration: underline;" class="center">Results for <span style="color: #ff695f;"><%= user.name %></span>!</h1>
+        <br><br><br>
+        <h3 class="center"style="text-decoration: underline;">Summary:</h3>
+        <br>
+        <br>
+        <div class="row center">
+            <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #60C0C8,#00EBFF);  color: white; padding: 60px; border-radius: 20px;">
+                <h1>Commissions:</h1>
+            </div>
+            <br>
+            <% var commision = 0; %>
+            <% var active = 0; %>
+            <% var passive = 0; %>
+
+            <% for(var i = 0; i< users.length; i++){ %>
+                <% if(users[i].introducerreference.toString().trim() == user.userreference.toString().trim()) {%>
+                    <% commision+=200 %>    
+                    <% active += 200 %>
+                    <% for(var j = 0; j< users.length; j++) { %>
+                        <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                            <% commision +=30 %>
+                            <% passive += 30 %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+
+            <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #00EBFF,#60C0C8); color: white; padding: 60px; border-radius: 20px;">
+                <h1>₹<%= commision %></h1>
+            </div>
+        </div>
+        <br>
+        <div class="row center">
+            <div class="col-md-6" style="border: 1px solid black;  color: white; background-image: linear-gradient(to right, #FF1B1B,#FF6666); padding: 60px; border-radius: 20px;">
+                <h1>Active Income:</h1>
+            </div>
+            <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #FF6666,#FF1B1B); color: white; padding: 60px; border-radius: 20px;">
+                <h1 id="myid">₹<%= active %></h1>
+            </div>
+        </div> 
+        <br>
+        <div class="row center">
+            <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #00FF40,#68E487); color: white; padding: 60px; border-radius: 20px;">
+                <h1>Passive Income:</h1>
+            </div>
+            <div class="col-md-6" style="border: 1px solid black; padding: 60px; background-image: linear-gradient(to right, #68E487,#00FF40); color: white; border-radius: 20px;">
+                <h1 id="myid">₹<%= passive %></h1>
+            </div>
+        </div>
+        <br> 
+        <div class="row center">
+            <div class="col-md-6 v-center" style="border: 1px solid black; background-image: linear-gradient(to right, #FF4500,#E88661); color: white; padding: 20px; border-radius: 20px;">
+                <h1>Reference Id:</h1>
+            </div>
+            <div class="col-md-6 v-center" style="border: 1px solid black; background-image: linear-gradient(to right, #E88661,#FF4500); color: white; padding: 20px; border-radius: 20px;">
+                <h1 id="myid"><%= user.userreference %></h1>
+            </div>
+        </div> 
+        <br>
+        <br>
+        <div>
+            <style>
+                tr:nth-child(even) {background-image: linear-gradient(to right, #FF3600, white);}
+
+                @media (max-width: 800px) {
+                    .col-md-6 {
+                        padding: 0px;
+                    }
+                }
+            </style>
+            <h3 class="center"style="text-decoration: underline;">Affiliate Statements!</h3>
+            <main id="main">
+                <div class="center container div-port" style="border: 1px solid black; margin-top: 30px; border-radius: 20px;">
+                    <br>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Commision</th>
+                            <th scope="col">Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i< users.length; i++){ %>
+                                <% if(users[i].introducerreference.toString().trim() == user.userreference.toString().trim()) {%>    
+                                        <tr>
+                                            <th scope="row"><%= users[i].username %></th>
+                                            <td><%= users[i].name %></td>
+                                            <td><%= users[i].phone %></td>
+                                            <td><%= users[i].email %></td>
+                                            <td>₹200</td>
+                                            <td>Active</td>
+                                        </tr>
+                                        <% for(var j = 0; j< users.length; j++) { %>
+                                            <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                                                <tr>
+                                                    <th scope="row"><%= users[j].username %></th>
+                                                    <td><%= users[j].name %></td>
+                                                    <td><%= users[j].phone %></td>
+                                                    <td><%= users[j].email %></td>
+                                                    <td>₹30</td>
+                                                    <td>Passive</td>
+                                                </tr>
+                                            <% } %>
+                                        <% } %>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>  
+                    </div>
+                    <br>
+            </main><!-- End #main -->
+        
+            
+        <div class="center" style="margin-top: 30px;">
+            <a onclick="copyDivToClipboard()" class="btn btn-buy" style="background: #ff695f; font-size:large;">Copy the Id</a>
+        </div>
+        </div>
+        
+</div>
+
+<script>
+
+    function copyDivToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("myid"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+    }
+</script>
+
+<%- include('partials/footer') %>
