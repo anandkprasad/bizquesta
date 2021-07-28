@@ -24,7 +24,7 @@
             <% var commision = 0; %>
             <% var active = 0; %>
             <% var passive = 0; %>
-
+            <% var introducer; %>
             <% for(var i = 0; i< users.length; i++){ %>
                 <% if(users[i].introducerreference.toString().trim() == user.userreference.toString().trim()) {%>
                     <% commision+=200 %>    
@@ -48,7 +48,20 @@
                 <h1>Active Income:</h1>
             </div>
             <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #FF6666,#FF1B1B); color: white; padding: 60px; border-radius: 20px;">
-                <h1 id="myid">₹<%= active %></h1>
+                <h1>₹<%= active %></h1>
+            </div>
+        </div> 
+        <br>
+        <div class="row center">
+            <div class="col-md-6" style="border: 1px solid black;  color: white; background-image: linear-gradient(to right, #FF1B1B,#FF6666); padding: 60px; border-radius: 20px;">
+                <h1>Introducer:</h1>
+            </div>
+            <div class="col-md-6" style="border: 1px solid black; background-image: linear-gradient(to right, #FF6666,#FF1B1B); color: white; padding: 60px; border-radius: 20px;">
+                <% for(var i = 0; i< users.length; i++){ %>
+                    <% if(user.introducerreference.toString().trim() == users[i].userreference.toString().trim()){ %>
+                        <h1><%= users[i].username %></h1>
+                    <% } %>
+                <% } %>
             </div>
         </div> 
         <br>
@@ -57,7 +70,7 @@
                 <h1>Passive Income:</h1>
             </div>
             <div class="col-md-6" style="border: 1px solid black; padding: 60px; background-image: linear-gradient(to right, #68E487,#00FF40); color: white; border-radius: 20px;">
-                <h1 id="myid">₹<%= passive %></h1>
+                <h1>₹<%= passive %></h1>
             </div>
         </div>
         <br> 
@@ -66,7 +79,7 @@
                 <h1>Reference Id:</h1>
             </div>
             <div class="col-md-6 v-center" style="border: 1px solid black; background-image: linear-gradient(to right, #E88661,#FF4500); color: white; padding: 20px; border-radius: 20px;">
-                <h1 id="myid"><%= user.userreference %></h1>
+                <h1 id="meow"><%= user.userreference %></h1>
             </div>
         </div> 
         <br>
@@ -140,7 +153,7 @@
 
     function copyDivToClipboard() {
         var range = document.createRange();
-        range.selectNode(document.getElementById("myid"));
+        range.selectNode(document.getElementById("meow"));
         window.getSelection().removeAllRanges(); // clear current selection
         window.getSelection().addRange(range); // to select text
         document.execCommand("copy");
