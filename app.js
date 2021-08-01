@@ -244,7 +244,7 @@ app.get("/users/details/:id", isLoggedIn, isAdmin, function(req, res){
     });
 });
 
-app.get('/success', function(req, res){
+app.post('/success', function(req, res){
     res.redirect("/signup");
 });
 
