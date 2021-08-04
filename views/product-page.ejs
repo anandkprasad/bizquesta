@@ -27,8 +27,13 @@
                 <a href="https://www.instamojo.com/@socialmediacourse/le3e306aeb4b7478bb48d82ff0bfb799c/" style="color:#ffffff; background:#ff695f;  padding: 10px 20px; border-radius:4px; text-align: center;"   data-layout="vertical">Buy Now</a>
                 <script src="https://js.instamojo.com/v1/button.js"></script> -->
 
-                <div> <a style=" width: 135px; background-color: #ff695f; text-align: center; font-weight: 800; padding: 11px 0px; color: white; font-size: 12px; display: inline-block; text-decoration: none; " href='https://pmny.in/RIdWfONUowdk' > Buy Now </a> </div>
-        </div>
+                <!-- payumoney -->
+                <!-- <div> <a style=" width: 135px; background-color: #ff695f; text-align: center; font-weight: 800; padding: 11px 0px; color: white; font-size: 12px; display: inline-block; text-decoration: none; " href='https://pmny.in/RIdWfONUowdk' > Buy Now </a> </div> -->
+<!-- 
+                razorpay -->
+
+                <button style="color:#ffffff; background:#ff695f;  padding: 10px 20px; border-radius:4px; text-align: center;" id="rzp-button1">Buy now</button>
+            </div>
         <br>
         <br>
     </div>
@@ -51,6 +56,33 @@
     box-shadow: 5px 5px #ff695f;">
         <p>Vikas said: "Useful knowledge was provided in the videos."</p>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+		axios.post('/order').then(function(info){
+			console.log(info);
+
+			var options = {
+					"key": "rzp_live_bFFkZc97K2uS1K", // Enter the Key ID generated from the Dashboard
+					"amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+					"currency": "INR",
+					"name": "Bizquesta",
+					"description": "Pay For Bizquesta Affiliate Services",
+					"order_id": info.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+					"theme": {
+						"color": "#ff695f"
+					},
+					callback_url: '/is-order-complete',
+  					redirect: true
+				};
+			var rzp1 = new Razorpay(options);
+			document.getElementById('rzp-button1').onclick = function(e){
+				rzp1.open();
+				e.preventDefault();
+			}
+		});
+	</script>
 
 </div>
 

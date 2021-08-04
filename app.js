@@ -1,4 +1,5 @@
 var express = require('express');
+var Razorpay = require('razorpay');
 var passport = require("passport");
 var bodyParser  = require("body-parser");
 var mongoose = require("mongoose");
@@ -9,6 +10,19 @@ var flash = require("connect-flash");
 const { v4: uuidv4 } = require('uuid');
 
 var app = express();
+
+const razorpay = new Razorpay({
+    key_id: 'rzp_live_bFFkZc97K2uS1K',
+    key_secret: '9EPOK4swLXT2ssyw5WkOou0N',
+})  
+
+//live mode
+// rzp_live_bFFkZc97K2uS1K
+// 9EPOK4swLXT2ssyw5WkOou0N
+
+//test mode
+// rzp_test_fQMRRJZBYgjlQe
+// JwW2P4lRsOtK4wn8ESTLz2iO
 
 mongoose.connect('mongodb+srv://admin:<password>@cluster0.lbbke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     auth: {
@@ -244,8 +258,40 @@ app.get("/users/details/:id", isLoggedIn, isAdmin, function(req, res){
     });
 });
 
-app.post('/success', function(req, res){
-    res.redirect("/signup");
+app.post('/order', function(req, res){
+    var options = {
+        amount: 1*100,
+        currency: "INR",
+        receipt: "order_rcptid_11"
+    }
+
+    razorpay.orders.create(options, function(err, order){
+        if(err){
+            console.log(err)
+        } else {
+            res.json(order);
+        }
+    });
+});
+
+app.get('/payment-successful', function(req, res){
+    res.render("success.ejs");
+});
+
+app.get("/payment-faliure", function(req, res){
+    res.render("faliure.ejs");
+});
+
+app.post('/is-order-complete', function(req, res){
+    
+    razorpay.payments.fetch(req.body.razorpay_payment_id).then(function(paymentDocument){
+        if(paymentDocument.status == 'captured'){
+            res.redirect('/payment-successful');
+        } else {
+            res.redirect('/payment-failure');
+        }
+    });
+
 });
 
 app.listen(process.env.PORT || 3000, function(){
