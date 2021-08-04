@@ -260,7 +260,7 @@ app.get("/users/details/:id", isLoggedIn, isAdmin, function(req, res){
 
 app.post('/order', function(req, res){
     var options = {
-        amount: 1*100,
+        amount: 300*100,
         currency: "INR",
         receipt: "order_rcptid_11"
     }
