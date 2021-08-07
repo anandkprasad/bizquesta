@@ -205,6 +205,23 @@ app.post('/contact', function(req, res){
     });
 });
 
+app.post('/contact-modal', function(req, res){
+    var details = {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
+    }
+
+    Contact.create(details, function(err, contact){
+        if(err){
+            res.send("Something went Wrong!");
+            console.log(err);
+        } else {
+            res.redirect('https://youtu.be/lHiEUQzVeQA');
+        }
+    });
+});
+
 app.post('/search', function(req, res){
     var input = req.body.input;
     User.find({}, function(err, users){
@@ -256,6 +273,14 @@ app.get("/users/details/:id", isLoggedIn, isAdmin, function(req, res){
             })
         }
     });
+});
+
+app.get('/terms', function(req, res){
+    res.render("terms.ejs");
+});
+
+app.get("/gst", function(req, res){
+    res.render("gst.ejs");
 });
 
 // app.post('/order', function(req, res){

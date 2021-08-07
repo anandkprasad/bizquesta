@@ -4,10 +4,12 @@
 
 <h1 style="font-family: 'PT Serif', serif;" class="center"> Welcome to <span style=" color: #ff695f;">Biz</span>Questa Affiliate Dashboard!</h1>
 <br>
+<p>Total users: <%= users.length-1 %></p>
+<br>
 <br>
 <div class="search">
   <form class="example" action="/search" method="POST">
-      <input type="text" placeholder="Search.." name="input">
+      <input type="text" placeholder="Search user/email..." name="input">
       <button type="submit">Search</button>
   </form>
 </div>
@@ -32,7 +34,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <% for(var i = 0; i< users.length; i++){ %>
+                        <% for(var i = users.length-1; i>= 0; i--){ %>
                           <tr>
                             <th scope="row"><%= users[i].username %></th>
                             <td><%= users[i].name %></td>

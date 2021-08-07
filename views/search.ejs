@@ -30,7 +30,7 @@
                         <tbody>
                             <tr>
                                 <% for(var i=0; i< users.length; i++){ %>
-                                    <% if(users[i].username.toLowerCase().search(input.toLowerCase()) != -1 || users[i].name.toLowerCase().search(input.toLowerCase()) != -1){ %>                         
+                                    <% if(users[i].username.toLowerCase().search(input.toLowerCase()) != -1 || users[i].email.toLowerCase().search(input.toLowerCase()) != -1){ %>                         
                                         <td><%= users[i].username %></td>
                                         <td><%= users[i].name %></td>
                                         <td><%= users[i].phone %></td>
