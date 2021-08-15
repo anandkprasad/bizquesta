@@ -24,25 +24,25 @@ var app = express();
 // rzp_test_fQMRRJZBYgjlQe
 // JwW2P4lRsOtK4wn8ESTLz2iO
 
-// mongoose.connect('mongodb+srv://admin:<password>@cluster0.lbbke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-//     auth: {
-//       user: "admin",
-//       password: "pass"
-//     },
-//     useNewUrlParser:true,
-//     useUnifiedTopology: true
-//       }).then(
-//         () => { 
-//             console.log("MongoAtlas Database connected.");
-//         },
-//         err => { 
-//             /** handle initial connection error */ 
-//             console.log("Error in database connection. ", err);
-//         }
-//     );
+mongoose.connect('mongodb+srv://admin:<password>@cluster0.lbbke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    auth: {
+      user: "admin",
+      password: "pass"
+    },
+    useNewUrlParser:true,
+    useUnifiedTopology: true
+      }).then(
+        () => { 
+            console.log("MongoAtlas Database connected.");
+        },
+        err => { 
+            /** handle initial connection error */ 
+            console.log("Error in database connection. ", err);
+        }
+    );
 
 
-mongoose.connect('mongodb://localhost/bizquesta', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost/bizquesta', {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.set('useFindAndModify', false);
