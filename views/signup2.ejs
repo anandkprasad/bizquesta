@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+<div class="main" style="margin-top: 60px;">
+        <div class="container login-main  back-auth">
+            <h1 class="center font display-4">Your Details!</h1>
+            <div class="center">
+                <p class="text-black">You're one step away from being an Affiliate Marketeer!</p>
+                <br>
+                <div class="">   
+                    <hr>
+                    <h1 style="text-decoration: underline;">Signup Details</h1>
+                    <br>
+                    <form action="/signup2" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Username" name="username" required>
+                    </div>
+                    <br>
+                    <!-- <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Type" name="type">
+                    </div>
+                    <br> -->
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <hr>
+                    <h1 style="text-decoration: underline;">Personal Details</h1>
+                    <hr>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Name" name="name" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Phone" name="phone" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Email" name="email" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Reference Id" name="introducerreference">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input class="form-control btn-primary" style="background-color: #ff695f;" type="submit" value="Submit">  
+                    </div>
+                    <br>
+                    </form>
+                    <div class="center"><a class="text-black" style="color: #ff695f;" href="/">Go back</a></div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<style>
+    .login-main{text-align:center;margin-top:5%;border:1px solid #000;padding:10px;border-radius:25px}.back-auth{background-color:#fff}.user-image{height:250px;width:auto;margin:3%}.text-black{color:#000}
+</style>
+<%- include('partials/footer') %>
+
+

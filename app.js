@@ -24,25 +24,25 @@ var app = express();
 // rzp_test_fQMRRJZBYgjlQe
 // JwW2P4lRsOtK4wn8ESTLz2iO
 
-mongoose.connect('mongodb+srv://admin:<password>@cluster0.lbbke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-    auth: {
-      user: "admin",
-      password: "pass"
-    },
-    useNewUrlParser:true,
-    useUnifiedTopology: true
-      }).then(
-        () => { 
-            console.log("MongoAtlas Database connected.");
-        },
-        err => { 
-            /** handle initial connection error */ 
-            console.log("Error in database connection. ", err);
-        }
-    );
+// mongoose.connect('mongodb+srv://admin:<password>@cluster0.lbbke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+//     auth: {
+//       user: "admin",
+//       password: "pass"
+//     },
+//     useNewUrlParser:true,
+//     useUnifiedTopology: true
+//       }).then(
+//         () => { 
+//             console.log("MongoAtlas Database connected.");
+//         },
+//         err => { 
+//             /** handle initial connection error */ 
+//             console.log("Error in database connection. ", err);
+//         }
+//     );
 
 
-// mongoose.connect('mongodb://localhost/bizquesta', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/bizquesta', {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.set('useFindAndModify', false);
@@ -56,6 +56,7 @@ var userSchema = new mongoose.Schema({
     email: String,
     introducerreference: String,
     userreference: String,
+    product: String
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -133,6 +134,10 @@ app.get('/signup', function(req, res){
     res.render("signup.ejs");
 })
 
+app.get('/signup2', function(req, res){
+    res.render("signup2.ejs");
+})
+
 
 app.post("/signup", function(req, res){
     var reference = uuidv4();
@@ -145,6 +150,32 @@ app.post("/signup", function(req, res){
                 address: req.body.address,
                 introducerreference: req.body.introducerreference,
                 userreference: reference,
+                product: "1"
+                };
+                
+    User.register(new User(user), req.body.password, function(err, user){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("/login");
+        }
+        passport.authenticate("local")(req,res, function(){
+            res.redirect("/dashboard");
+        });    
+    });
+})
+
+app.post("/signup2", function(req, res){
+    var reference = uuidv4();
+    var user = {
+                username: req.body.username, 
+                type: req.body.type,
+                name: req.body.name,
+                phone: req.body.phone,
+                email: req.body.email,
+                address: req.body.address,
+                introducerreference: req.body.introducerreference,
+                userreference: reference,
+                product: "2"
                 };
                 
     User.register(new User(user), req.body.password, function(err, user){
@@ -173,6 +204,10 @@ app.get("/product", function(req, res){
     res.render("product-page.ejs");
 });
 
+app.get("/product2", function(req, res){
+    res.render("product-page-2.ejs");
+});
+
 app.get('/admin-dashboard', isLoggedIn, isAdmin, function(req, res){
     User.find({}, function(err, users){
         if(err){
@@ -186,6 +221,10 @@ app.get('/admin-dashboard', isLoggedIn, isAdmin, function(req, res){
 
 app.get('/learn', isLoggedIn, function(req, res){
     res.render("learn.ejs");
+});
+
+app.get("/learn2", isLoggedIn, function(req, res){
+    res.render("learn2.ejs");
 });
 
 app.post('/contact', function(req, res){
@@ -318,6 +357,7 @@ app.get("/gst", function(req, res){
 //     });
 
 // });
+
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("Bizquesta server started...");

@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<div class="container center" style="padding-top: 150px;">
+
+    <h1 style="font-family: 'PT Serif', serif;" class="center">Learn the <span style=" color: #ff695f;">Biz</span>Questa Ways!</h1>
+    <br>
+    <br>
+    <main id="main">
+        <h1 style="font-family: 'PT Serif', serif;">The <span style=" color: #ff695f;">Course</span> will <span style=" color: #ff695f;">Launch</span> on:</h1>
+        <br>
+        <br>
+        <h1 id="demo" style="font-family: 'PT Serif', serif; color: #ff695f; border: 1px solid black; padding: 20px; border-radius: 25px;"></h1>
+        <br>
+        <br>
+        <a href="/dashboard" class="btn btn-buy" style="background: rgb(48, 187, 48); margin: 0 auto; text-align: center; font-size:large;">Back</a>
+        <br>
+        <br>
+    </main>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Aug 17, 2021 12:00:00").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+          document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Any Moment Now...";
+          }
+        }, 1000);
+        </script>
+</div>
+
+<%- include('partials/footer') %>

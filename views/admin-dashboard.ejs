@@ -29,6 +29,7 @@
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
                         <th scope="col">User Reference Id</th>
+                        <th scope="col">Subscription</th>
                         <th scope="col">Delete</th>
                         <th scope="col">Commissions</th>
                       </tr>
@@ -46,6 +47,11 @@
                             <td><%= users[i].phone %></td>
                             <td><%= users[i].email %></td>
                             <td><%= users[i].userreference %></td>
+                            <% if(users[i].product != undefined && users[i].product.toString().trim() == "2"){ %>
+                              <td>Bizquesta Supreme</td>
+                            <% } else { %>
+                              <td>Bizquesta Branding and Marketing Kit</td>
+                            <% } %>
                             <td><a href="/users/<%= users[i]._id %>">Delete</a></td>
                             <td><a href="/users/details/<%= users[i]._id %>">Commissions</a></td>
                           </tr>

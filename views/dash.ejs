@@ -23,7 +23,13 @@
     <% } else { %>
         <h1 style="font-family: 'PT Serif', serif;" class="center"> Welcome to <span style=" color: #ff695f;">Biz</span>Questa Affiliate Dashboard!</h1>
         <br>
-        <h1 style="font-family: 'PT Serif', serif; text-decoration: underline;" class="center"> Hello, <span style="color: #ff695f;"><%= currentUser.name %></span>!</h1>
+        <h1 style="font-family: 'PT Serif', serif; text-decoration: underline;" class="center"> Hello, <span style="color: #ff695f;"><%= currentUser.name %></span>! <br> <br> You've subscribed to the 
+        <% if(currentUser.product != undefined && currentUser.product.toString().trim() == "2"){ %>
+            Bizquesta Supreme.
+        <% } else { %>
+            Bizquesta Branding and Marketing Kit.
+        <% } %>
+        </h1>
         <br><br><br>
         <h3 class="center"style="text-decoration: underline;">Summary:</h3>
         <br>
@@ -37,14 +43,29 @@
             <% var active = 0; %>
             <% var passive = 0; %>
 
-            <% for(var i = 0; i< users.length; i++){ %>
-                <% if(users[i].introducerreference.toString().trim() == currentUser.userreference.toString().trim()) {%>
-                    <% commision+=200 %>    
-                    <% active += 200 %>
-                    <% for(var j = 0; j< users.length; j++) { %>
-                        <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
-                            <% commision +=30 %>
-                            <% passive += 30 %>
+            <% if(currentUser.product != undefined && currentUser.product.toString().trim() == "2"){ %>
+                <% for(var i = 0; i< users.length; i++){ %>
+                    <% if(users[i].introducerreference.toString().trim() == currentUser.userreference.toString().trim()) {%>
+                        <% commision+=650 %>    
+                        <% active += 650 %>
+                        <% for(var j = 0; j< users.length; j++) { %>
+                            <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                                <% commision +=150 %>
+                                <% passive += 150 %>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } else { %>
+                <% for(var i = 0; i< users.length; i++){ %>
+                    <% if(users[i].introducerreference.toString().trim() == currentUser.userreference.toString().trim()) {%>
+                        <% commision+=200 %>    
+                        <% active += 200 %>
+                        <% for(var j = 0; j< users.length; j++) { %>
+                            <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                                <% commision +=30 %>
+                                <% passive += 30 %>
+                            <% } %>
                         <% } %>
                     <% } %>
                 <% } %>
@@ -110,6 +131,33 @@
                         </tr>
                         </thead>
                         <tbody>
+                            
+                        <% if(currentUser.product != undefined && currentUser.product.toString().trim() == "2"){ %>
+                            <% for(var i = 0; i< users.length; i++){ %>
+                                <% if(users[i].introducerreference.toString().trim() == currentUser.userreference.toString().trim()) {%>    
+                                        <tr>
+                                            <th scope="row"><%= users[i].username %></th>
+                                            <td><%= users[i].name %></td>
+                                            <td><%= users[i].phone %></td>
+                                            <td><%= users[i].email %></td>
+                                            <td>₹650</td>
+                                            <td>Active</td>
+                                        </tr>
+                                        <% for(var j = 0; j< users.length; j++) { %>
+                                            <% if(users[i].userreference.toString().trim() == users[j].introducerreference.toString().trim()){ %>
+                                                <tr>
+                                                    <th scope="row"><%= users[j].username %></th>
+                                                    <td><%= users[j].name %></td>
+                                                    <td><%= users[j].phone %></td>
+                                                    <td><%= users[j].email %></td>
+                                                    <td>₹150</td>
+                                                    <td>Passive</td>
+                                                </tr>
+                                            <% } %>
+                                        <% } %>
+                                <% } %>
+                            <% } %>
+                        <% } else { %>
                             <% for(var i = 0; i< users.length; i++){ %>
                                 <% if(users[i].introducerreference.toString().trim() == currentUser.userreference.toString().trim()) {%>    
                                         <tr>
@@ -134,6 +182,7 @@
                                         <% } %>
                                 <% } %>
                             <% } %>
+                        <% } %>
                         </tbody>
                     </table>  
                     </div>
@@ -143,7 +192,11 @@
             
         <div class="center" style="margin-top: 30px;">
             <a onclick="copyDivToClipboard()" class="btn btn-buy" style="background: #ff695f; font-size:large;">Copy Your Id</a>
-            <a href="/learn" class="btn btn-buy" style="background: rgb(48, 187, 48); font-size:large;">Learn</a>
+            <% if(currentUser.product != undefined && currentUser.product.toString().trim() == "2"){ %>
+                <a href="/learn2" class="btn btn-buy" style="background: rgb(48, 187, 48); font-size:large;">Learn</a>
+            <% } else { %>
+                <a href="/learn" class="btn btn-buy" style="background: rgb(48, 187, 48); font-size:large;">Learn</a>
+            <% } %>
         </div>
         </div>
     <% } %>
